@@ -51,28 +51,38 @@ def mage_hold_right_click():
     if holding:
         print("Walling");
         pyautogui.press('f12')
+        pyautogui.press('f12')
+        pyautogui.keyDown('ctrlleft')
         for wall in bloodwalls:            
            if holding:
-               pyautogui.keyDown('alt')            
                pyautogui.rightClick(mouseAttackX,mouseAttackY + wall)
-               pyautogui.keyUp('alt')
-               time.sleep(1)
-               pyautogui.press('f12')
-               pyautogui.keyDown('alt')            
+               time.sleep(1.2)
+               pyautogui.press('f8')
                pyautogui.rightClick(mouseAttackX,mouseAttackY)
-               pyautogui.keyUp('alt')
-               time.sleep(1)
+               
+               time.sleep(1.2)
+               pyautogui.press('f12')
                pyautogui.press('f12')
             #    if wall != -50:
             #        time.sleep(1)  
         pyautogui.press('f12')  
-        
+        pyautogui.keyUp('ctrlleft')
         # pyautogui.rightClick(mouseAttackX,mouseAttackY)
         pyautogui.moveTo(mouseAttackX,mouseAttackY)
     while holding:
-        pyautogui.mouseDown(button='right')
-        time.sleep(0.1)  # Small sleep to reduce CPU usage        
-                
+        #pyautogui.mouseDown(button='right')
+        #time.sleep(0.1)  # Small sleep to reduce CPU usage 
+        pyautogui.keyDown('ctrlleft')            
+        pyautogui.rightClick(mouseAttackX,mouseAttackY)
+        pyautogui.keyUp('ctrlleft')
+        time.sleep(1.2)
+        pyautogui.press('f8')
+        pyautogui.keyDown('ctrlleft')            
+        pyautogui.rightClick(mouseAttackX,mouseAttackY)
+        pyautogui.keyUp('ctrlleft')
+        time.sleep(1.2)
+        pyautogui.press('f12')
+              
 
 def toggle_right_click():
     global holding
@@ -240,7 +250,7 @@ if __name__ == "__main__":
       
     keyboard.add_hotkey(hotkeyAttack, toggle_right_click_mage2) 
     print("Tecla para atacar mouse direito (Segurar): " + hotkeyHoldRight)
-    print("Tecla para combo mago: " + hotkeyAttack + " NECESSÁRIO MARCAR POSIÇÃO EM BAIXO DO CHAR")
+    print("Tecla para combo mago: " + hotkeyAttack + " NECESSÁRIO MARCAR POSIÇÃO EM BAIXO DO CHAR f8 noose, f12 meteoro e wall")
     print("Tecla para setar posição: " + hotkeySalvar)
     
     # Keep the main thread alive to listen for the hotkey
